@@ -6,8 +6,8 @@ import { useRef, useEffect, useState } from 'react';
 const stats = [
   { value: '10,000+', label: 'Businesses Served', suffix: '' },
   { value: '50M+', label: 'Messages Automated', suffix: '' },
-  { value: '99.9%', label: 'Uptime', suffix: '' },
-  { value: '24/7', label: 'Support', suffix: '' },
+  { value: ' 99.9% ', label: 'Uptime', suffix: '' },
+  { value: ' 24/7 ', label: 'Support', suffix: '' },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: string; suffix: string }) {
