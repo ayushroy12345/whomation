@@ -46,7 +46,6 @@ function AnimatedCounter({ value }: { value: string }) {
   );
 }
 
-
 export default function Stats() {
   return (
     <section className="py-20 relative overflow-hidden">
@@ -64,7 +63,7 @@ export default function Stats() {
               className="text-center"
             >
               <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <AnimatedCounter value={stat.value} />
               </div>
               <div className="text-gray-400">{stat.label}</div>
             </motion.div>
