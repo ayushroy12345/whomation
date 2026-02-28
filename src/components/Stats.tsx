@@ -4,21 +4,23 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 const stats = [
-  { value: '10,000+', label: 'Businesses Served', suffix: '' },
-  { value: '50M+', label: 'Messages Automated', suffix: '' },
-  { value: ' 99.9% ', label: 'Uptime', suffix: '' },
-  { value: ' 24/7 ', label: 'Support', suffix: '' },
+  { value: '10,000+', label: 'Businesses Served' },
+  { value: '50M+', label: 'Messages Automated' },
+  { value: '99.9%', label: 'Uptime' },
+  { value: '24/7', label: 'Support' },
 ];
 
-function AnimatedCounter({ value, suffix }: { value: string; suffix: string }) {
+function AnimatedCounter({ value }: { value: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
+  const numValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+  const suffix = value.replace(/[0-9.,]/g, '');
+
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || isNaN(numValue)) return;
     
-    const numValue = parseInt(value.replace(/\D/g, ''));
     const duration = 2000;
     const steps = 60;
     const increment = numValue / steps;
@@ -30,21 +32,20 @@ function AnimatedCounter({ value, suffix }: { value: string; suffix: string }) {
         setCount(numValue);
         clearInterval(timer);
       } else {
-        setCount(Math.floor(current));
+        setCount(parseFloat(current.toFixed(1)));
       }
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [isInView, value]);
-
-  const prefix = value.replace(/[\d+]/g, '').replace(/,/g, '');
+  }, [isInView, numValue]);
 
   return (
     <span ref={ref}>
-      {prefix}{count.toLocaleString()}{suffix}
+      {count}{suffix}
     </span>
   );
 }
+
 
 export default function Stats() {
   return (
