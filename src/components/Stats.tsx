@@ -11,15 +11,16 @@ const stats = [
 ];
 
 function AnimatedCounter({ value }: { value: string }) {
-  const [count, setCount] = useState(0);
+  const [displayValue, setDisplayValue] = useState(value);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const numValue = parseFloat(value.replace(/[^0-9.]/g, ''));
-  const suffix = value.replace(/[0-9.,]/g, '');
+  const match = value.match(/^([\d,.]+)(.*)$/);
+  const numValue = match ? parseFloat(match[1].replace(/,/g, '')) : 0;
+  const suffix = match ? match[2] : '';
 
   useEffect(() => {
-    if (!isInView || isNaN(numValue)) return;
+    if (!isInView || !numValue) return;
     
     const duration = 2000;
     const steps = 60;
@@ -29,21 +30,18 @@ function AnimatedCounter({ value }: { value: string }) {
     const timer = setInterval(() => {
       current += increment;
       if (current >= numValue) {
-        setCount(numValue);
+        setDisplayValue(value);
         clearInterval(timer);
       } else {
-        setCount(parseFloat(current.toFixed(1)));
+        const formatted = numValue % 1 !== 0 ? current.toFixed(1) : Math.floor(current).toLocaleString();
+        setDisplayValue(formatted + suffix);
       }
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [isInView, numValue]);
+  }, [isInView, numValue, value, suffix]);
 
-  return (
-    <span ref={ref}>
-      {count}{suffix}
-    </span>
-  );
+  return <span ref={ref}>{displayValue}</span>;
 }
 
 export default function Stats() {
