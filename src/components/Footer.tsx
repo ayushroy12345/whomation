@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MessageCircle, Twitter, Linkedin, Github } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -15,9 +16,7 @@ export default function Footer() {
                 <div className="mac-dot mac-dot-yellow" />
                 <div className="mac-dot mac-dot-green" />
               </div>
-              <a href="#" className="text-2xl font-bold text-gradient">
-                WHOMATION
-              </a>
+              <Logo />
             </div>
             <p className="text-gray-400 max-w-md mb-6">
               Your AI WhatsApp agent that works 24/7. Automate replies, generate

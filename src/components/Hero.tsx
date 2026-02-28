@@ -44,16 +44,18 @@ export default function Hero() {
               className="btn-primary text-lg inline-flex items-center justify-center gap-2"
             >
               <Zap size={20} />
-              Start Free Trial
+              Get Started
             </motion.a>
-            <motion.button
+            <motion.a
+              href="https://forms.gle/kWDj2oySdjssKPXX9"
+              target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-xl border border-gray-700 text-white font-semibold hover:border-gray-500 transition-colors inline-flex items-center justify-center gap-2"
             >
               <MessageCircle size={20} />
-              See Demo
-            </motion.button>
+              Book Demo
+            </motion.a>
           </div>
 
           <motion.div

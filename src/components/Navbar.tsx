@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,9 +40,7 @@ export default function Navbar() {
             <div className="mac-dot mac-dot-yellow" />
             <div className="mac-dot mac-dot-green" />
           </div>
-          <a href="#" className="text-2xl font-bold text-gradient">
-            WHOMATION
-          </a>
+          <Logo />
         </div>
 
         <div className="hidden md:flex items-center gap-8">

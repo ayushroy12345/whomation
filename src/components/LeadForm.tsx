@@ -45,12 +45,31 @@ export default function LeadForm() {
     
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Form submitted:', formData);
+    try {
+      const response = await fetch('https://formspree.io/f/xdaljrvp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          business: formData.business,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Form submitted:', formData);
+        setIsSubmitted(true);
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    }
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
   };
 
   return (

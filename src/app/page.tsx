@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
+import Pricing from '@/components/Pricing';
 import Stats from '@/components/Stats';
 import Demo from '@/components/Demo';
 import LeadForm from '@/components/LeadForm';
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Features />
       <HowItWorks />
+      <Pricing />
       <Stats />
       <Demo />
       <LeadForm />
