@@ -85,7 +85,7 @@ export default function Pricing() {
               </a>
 
               <p className="text-gray-500 text-sm mt-6">
-                After trial, pricing starts at just ₹1,000/month. Custom plans available for larger businesses.
+                After trial, pricing starts and Custom plans available for larger businesses.
               </p>
             </div>
           </div>
